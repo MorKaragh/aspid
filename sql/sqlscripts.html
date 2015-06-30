@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+
+CREATE SEQUENCE aspid_uid_seq;
+
+
+create table aspid_users(uid INTEGER NOT NULL default nextval('aspid_uid_seq'),
+vkuid integer,
+username varchar(150)
+);
+
+alter table aspid_users add primary key (uid)
+alter table aspid_users add column group_id integer references aspid_groups;
+alter table aspid_users add column rank integer references aspid_ranks;
+
+ALTER SEQUENCE aspid_uid_seq owned by aspid_users.vkuid;
+
+create table personal_info_attr_type(
+id integer,
+name varchar,
+datatype varchar,
+inuse integer
+);
+
+alter table personal_info_attr_type add primary key (id)
+
+insert into personal_info_attr_type values(
+1,'телефон','text',1
+);
+
+insert into personal_info_attr_type values(
+2,'позывной','text',1
+);
+
+insert into personal_info_attr_type values(
+3,'дата рождения','text',1
+);
+
+create table aspid_groups(id integer primary key, group_name varchar(150));
+insert into aspid_groups(id,group_name) values (1,'Основа');
+insert into aspid_groups(id,group_name) values (2,'Разведка');
+insert into aspid_groups(id,group_name) values (3,'Штурм');
+
+create table aspid_ranks(id integer primary key, rank_name varchar(150), hier_level integer);
+insert into aspid_ranks(id,rank_name, hier_level) values (1,'Командир команды',1);
+insert into aspid_ranks(id,rank_name, hier_level) values (2,'Зам. командира команды',2);
+insert into aspid_ranks(id,rank_name, hier_level) values (3,'Старший группы',3);
+insert into aspid_ranks(id,rank_name, hier_level) values (4,'Зам. старшего группы',4);
+insert into aspid_ranks(id,rank_name, hier_level) values (5,'Боец',5);
+insert into aspid_ranks(id,rank_name, hier_level) values (6,'Рекрут',6);
+
+create table aspid_roles(role_id varchar(20) primary key, role_description varchar(1000));
+create table aspid_user_roles(uid integer references aspid_users, role_id varchar references aspid_roles);
+
+insert into aspid_roles(role_id, role_description) values('FULL_ACCESS','Право на всё');
+insert into aspid_user_roles(uid,role_id) values (181,'FULL_ACCESS');
+insert into aspid_user_roles(uid,role_id) values (187,'FULL_ACCESS');
+
+create table personal_info_attr_val(uid integer references aspid_users, attr_type_id integer references personal_info_attr_type, val_string varchar(4000));
+
+ALTER TABLE public.aspid_users RENAME COLUMN rank TO rank_id;
+alter table aspid_users add column is_active integer;
+
+CREATE SEQUENCE debug_seq;
+
+create table debug(id INTEGER NOT NULL default nextval('debug_seq'),
+txt varchar(4000), ins_date date default current_timestamp);
+
+insert into aspid_groups(id,group_name) values (4,'Командование');
+insert into aspid_groups(id,group_name) values (5,'Рекруты');
+insert into aspid_groups(id,group_name) values (6,'Запас');
+
+-->
+
+</body>
+</html>
