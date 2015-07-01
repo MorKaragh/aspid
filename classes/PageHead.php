@@ -9,6 +9,12 @@
 class PageHead {
 
     public static function getNormalHead(){
+        PageHead::getNonAspidHead();
+        echo '<link href="css/aspid.css" rel="stylesheet">';
+    }
+
+
+    public static function getNonAspidHead(){
         echo '
             <meta charset="utf-8">
 
@@ -20,12 +26,6 @@ class PageHead {
 
             <link href="css/bootstrap.min.css" rel="stylesheet">
 
-            <link href="css/bootstrap-combined.min.css" rel="stylesheet">
-
-            <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
-
-            <link href="css/aspid.css" rel="stylesheet">
-
             <script src="//vk.com/js/api/openapi.js" type="application/javascript"></script>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -35,7 +35,10 @@ class PageHead {
             <script src="//vk.com/js/api/openapi.js" type="application/javascript"></script>
 
             <script src="js/aspid.js" type="application/javascript"></script>
+
+            <link rel="icon" type="image/png" href="/favicon.png" />
         ';
     }
+
 
 }

@@ -8,14 +8,20 @@
 error_reporting(1);
 require_once 'UserDAO.php';
 
+/* msk_aspid
+ * ZvlvolKarLra1Q7U4r2E
+ * 4953382
+ *
+ * */
+
 class AspidAuth {
 
     var $userDao;
 
     public function __construct(){
         $this->userDao = new UserDAO();
-        define("APP_ID",     "4953382");
-        define("APP_SHARED_SECRET",    "ZvlvolKarLra1Q7U4r2E");
+        define("APP_ID",     "4978729");
+        define("APP_SHARED_SECRET",    "BJ2DiBTndvMqnHeVqunE");
     }
 
     function authOpenAPIMember() {

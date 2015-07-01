@@ -5,7 +5,7 @@
 function processAllAspids(){
     console.log('enter processAllAspids');
     VK.init({
-        apiId: 4953382
+        apiId: 4978729
     });
     VK.Api.call('groups.getMembers', {group_id: "msk_aspid"}, function(r) {
         if(r) {

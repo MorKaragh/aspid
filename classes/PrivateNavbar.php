@@ -5,6 +5,12 @@
  * Date: 26.06.15
  * Time: 21:44
  */
+ini_set("display_errors",1);
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
+require_once 'AspidAuth.php';
 
 class PrivateNavbar {
 
@@ -12,26 +18,29 @@ class PrivateNavbar {
 
     }
 
-    public function show(){
+    public function show(AspidAuth $aspidAuth){
 
-        echo '
+        echo '<div class="private-navbar blackblock" style="padding: 20px;">';
 
-        <div class="private-navbar blackblock" style="padding: 20px;">
-            <button type="button" id="refreshAspidList" class="btn btn-labeled btn-warning" style="width:180px;">
-                <span class="btn-label"><i class="glyphicon glyphicon-refresh"></i></span><span id="captionRefresh">Обновить список</span></button>
-            </div>
-        <script>
+        if($aspidAuth->checkRole("RENEW_ASPIDS")) {
 
-            $("#refreshAspidList").click(function(){
-                $(this).unbind();
-                $(this).addClass("btn-danger");
-                $("#captionRefresh").text("ПОДОЖДИТЕ");
-                renewAspidList();
-            });
+            echo '
+                <button type="button" id="refreshAspidList" class="btn btn-labeled btn-warning" style="width:180px;">
+                    <span class="btn-label"><i class="glyphicon glyphicon-refresh"></i></span><span id="captionRefresh">Обновить список</span></button>
 
-        </script>
+                <script>
+                    $("#refreshAspidList").click(function(){
+                        $(this).unbind();
+                        $(this).addClass("btn-danger");
+                        $("#captionRefresh").text("ПОДОЖДИТЕ");
+                        renewAspidList();
+                    });
+                </script>
+            ';
 
-        ';
+        }
+
+        echo '</div>';
 
     }
 

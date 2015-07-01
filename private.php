@@ -38,7 +38,7 @@ require_once "classes/PrivateNavbar.php"
     if($member !== FALSE) {
 
         $privateNavbar = new PrivateNavbar();
-        $privateNavbar->show();
+        $privateNavbar->show($auth);
 
         $userDAO = new UserDAO();
         $set = $userDAO->getAllActiveUsers();

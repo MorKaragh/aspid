@@ -4,7 +4,7 @@
 
 function enterVk(){
     VK.init({
-        apiId: 4953382
+        apiId: 4978729
     });
     VK.Auth.login(enterRange,262144);
 }
@@ -30,7 +30,7 @@ function isAspid(uid){
 
 function renewList(){
     VK.init({
-        apiId: 4953382
+        apiId: 4978729
     });
     VK.Api.call('groups.getMembers', {group_id:'msk_aspid'}, function(r) {
         //alert("!!");
