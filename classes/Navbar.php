@@ -31,8 +31,8 @@ class Navbar {
         $enterVkButton = new NavbarButton('Войти через Вконтакте');
         $enterVkButton->setLink('private.php');
 
-        $cabinetButton = '<a href="#" onclick="enterVk();" >Войти через VK</a>';
-
+        $cabinetButton = '<a onclick="enterVk();" >Войти через VK</a>';
+        $regCabinetButton = '<a onclick="enterReg();" data-toggle="modal" data-target="#login-modal">Войти по регистрации</a>';
 //        if($_COOKIE['aspid_member_name']){
 //            $cabinetButton = '<a href="#" onclick="enterVk();" >'.rawurldecode($_COOKIE['aspid_member_name']).'</a>';
 //        }
@@ -68,10 +68,31 @@ class Navbar {
                     </ul>
                     <ul class="nav navbar-nav navbar-right" >
                             <li id="authBtn">'.$cabinetButton.'</li>
+                            <li id="regAuthButton">'.$regCabinetButton.'</li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="aspid-login modal-dialog">
+				<div class="aspid-login loginmodal-container" style="background-color: rgb(233, 237, 197); padding: 15px; border-radius: 10px;">
+					<h1>Вход на сайт</h1><br>
+				  <form method="post" action="phpscripts/login.php">
+					<input type="text" name="user" placeholder="Логин">
+					<input type="password" name="pass" placeholder="Пароль">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Войти">
+				  </form>
+                    <!--
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div> -->
+				</div>
+			</div>
+		  </div>
+        </div>
+
         ';
 
         echo($bodyHtml);

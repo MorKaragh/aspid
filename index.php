@@ -20,11 +20,6 @@ if(!isset($_SESSION)){
     Navbar::show('USTAV');
 ?>
 
-<?php
-    $DB = new InventoryDAO();
-    $DB->saveInventory();
-?>
-
 <div class="container block_fullscreen">
     <div class="row block block_full block_fullscreen" style="padding: 20px;">
         <div class="col-md-12 col-sm-12 col-centered">

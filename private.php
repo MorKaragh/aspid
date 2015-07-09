@@ -27,7 +27,7 @@ require_once "classes/PrivateNavbar.php"
 
 <?php Navbar::show('USTAV'); ?>
 
-<div class="container">
+<div class="container" style="padding-top: 40px;">
 
 <div class="row">
 

@@ -15,4 +15,9 @@ class InventoryDAO extends CoreDAO {
 
     }
 
+    public function getAllItemGroups(){
+        $result = parent::execQuery("select * from public.item_groups",null);
+        return $result;
+    }
+
 }

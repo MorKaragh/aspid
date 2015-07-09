@@ -11,6 +11,7 @@ class PageHead {
     public static function getNormalHead(){
         PageHead::getNonAspidHead();
         echo '<link href="css/aspid.css" rel="stylesheet">';
+        echo '<link href="css/aspid.css" rel="stylesheet">';
     }
 
 

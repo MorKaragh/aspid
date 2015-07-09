@@ -11,6 +11,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 require_once 'AspidAuth.php';
+require_once "classes/ComboboxFactory.php";
 
 class PrivateNavbar {
 
@@ -20,7 +21,7 @@ class PrivateNavbar {
 
     public function show(AspidAuth $aspidAuth){
 
-        echo '<div class="private-navbar blackblock" style="padding: 20px;">';
+        echo '<div class="blackblock" style="padding: 20px;">';
 
         if($aspidAuth->checkRole("RENEW_ASPIDS")) {
 
@@ -42,6 +43,38 @@ class PrivateNavbar {
 
         echo '</div>';
 
+    }
+
+
+    public function showInventoryBar(AspidAuth $aspidAuth, ComboboxFactory $comboboxFactory, ItemGroupDictionary $itemGroupDictionary){
+        if($aspidAuth->checkRole("COMMANDER")) {
+
+            echo '<div class="private-navbar blackblock">';
+
+            $itemBlock = addslashes(
+                '<div class="item-block">'.
+                    '<input uid="" type="text" placeholder="название предмета" class="darktextinput inventory-text-input" />'.
+                    '<input uid="" type="text" placeholder="ссылка" class="darktextinput inventory-text-input" />'.
+                    '<textarea class="form-control darktextinput item-description" rows="3" placeholder="подробное описание"></textarea>'.
+                '</div>'
+            );
+
+            echo '
+                <button type="button" id="addNewInventoryItemBtn" class="btn btn-labeled btn-primary" style="width:180px;">
+                    <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span><span id="captionRefresh">Добавить предмет</span></button>
+
+'.$comboboxFactory->getItemGroupCombobox(null,null,$itemGroupDictionary).'
+
+                <script>
+                    $("#addNewInventoryItemBtn").click(function(){
+                        $("#inventoryContainer").append("'.$itemBlock.'");
+                        alert($(".dropdown-toggle.aspid-items-box").text());
+                    });
+                </script>
+            ';
+        }
+
+        echo '</div>';
     }
 
 }

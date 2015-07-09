@@ -278,8 +278,6 @@ a:link, a:visited {
 
 /** -=CIRCLE BUTTON=-  **/
 
-body{margin:40px;}
-
 
 .btn-circle {
     width: 30px;
@@ -315,5 +313,42 @@ body{margin:40px;}
 /** -=END LABELLED BUTTON=-  **/
 
 .block_fullscreen{
+    padding-top: 40px;
     height: 100% !important;
+}
+
+.item-block{
+    border: 1px solid #318024;
+    border-radius: 5px;
+    height: 150px;
+    width: 473px;
+    margin-bottom: 40px;
+}
+
+.inventory-text-input{
+    margin: 5px;
+}
+
+.item-description{
+    margin: 5px;
+    width: 460px;
+}
+
+.inventory-main-block{
+    padding-bottom: 50px;
+    padding-top: 10px;
+}
+
+.private-navbar {
+    padding: 20px;
+    z-index: 999;
+    border-bottom: 1px dashed #173c11;
+    position: fixed;
+    width: 100%;
+}
+
+.aspid-login{
+    background-color: #b9b9b9 !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
 }

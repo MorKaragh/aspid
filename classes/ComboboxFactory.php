@@ -7,6 +7,7 @@
  */
 
 require_once 'dictionary/RankDictionary.php';
+require_once 'dictionary/ItemGroupDictionary.php';
 
 class ComboboxFactory {
 
@@ -59,6 +60,34 @@ class ComboboxFactory {
                 '.$valuesHtml.'
                 <li class="divider"></li>
                 <li><a rank_id="0">Без звания</a></li>
+            </ul>
+        </div>
+
+        ';
+    }
+
+    public function getItemGroupCombobox($selectedGroup, $uid, ItemGroupDictionary $dictionary){
+
+        $groups = $dictionary->groups;
+        $selectedText = "нет ";
+        $valuesHtml = "";
+
+        foreach($groups as $group){
+            $valuesHtml = $valuesHtml.'<li><a group_id="'.$group['id'].'">'.$group['group_name'].'</a></li>';
+            if($selectedGroup == $group['id']){
+                $selectedText = $group['group_name'];
+            }
+        }
+
+        return '
+        <div class="btn-group btn-item-group" uid="'.$uid.'">
+            <a class="btn btn-primary dropdown-toggle btn-select aspid-items-box aspdcombobox" data-toggle="dropdown" href="#" style="width: 250px;" >
+                ' .$selectedText.'<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu rank-combobox">
+                '.$valuesHtml.'
+                <li class="divider"></li>
+                <li><a group_id="0">Без звания</a></li>
             </ul>
         </div>
 

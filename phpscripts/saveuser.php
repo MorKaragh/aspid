@@ -18,6 +18,7 @@ if ($_POST != null) {
     }
 
     $userDao = new UserDAO();
+    $userDao->debugLog($_POST['vkuid'].'---'.$_POST['vkname']);
 
     if(isset($_POST['jsn'])){
         $membersInBase = $userDao->getAllActiveUsers();

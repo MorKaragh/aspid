@@ -77,6 +77,14 @@ insert into aspid_groups(id,group_name) values (4,'Командование');
 insert into aspid_groups(id,group_name) values (5,'Рекруты');
 insert into aspid_groups(id,group_name) values (6,'Запас');
 
+create table item_groups(id integer primary key, group_name varchar(100));
+
+insert into item_groups(id, group_name) values (1,'Обязательное снаряжение');
+insert into item_groups(id, group_name) values (2,'Второстепенное снаряжение');
+insert into item_groups(id, group_name) values (3,'Рекомендованное снаряжение');
+
+alter table aspid_users add column login varchar(100);
+alter table aspid_users add column passwd varchar(1000);
 -->
 
 </body>

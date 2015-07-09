@@ -39,11 +39,6 @@ class CoreDAO {
         $result = array();
         $q = $this->pdo->prepare($sql);
         $q->execute($params);
-
-//            echo "\nPDOStatement::errorInfo():\n";
-//            $arr = $q->errorInfo();
-//            print_r($arr);
-
         while ($row = $q->fetch(PDO::FETCH_BOTH)){
             array_push($result,$row);
         }

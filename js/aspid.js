@@ -3,10 +3,13 @@
  */
 
 function enterVk(){
+    console.log("=============== enter enterVk ===============");
     VK.init({
         apiId: 4978729
     });
+    console.log("trying to login...");
     VK.Auth.login(enterRange,262144);
+    console.log("after login...");
 }
 
 function loggin(response){
@@ -21,7 +24,7 @@ function isAspid(uid){
         console.log(JSON.stringify(r));
         if(r.response[0].member == 1) {
             writeMyNameToCookies();
-            window.open("http://msk-aspid.strikeball-team.ru/private.php","_self");
+            window.open("http://msk-aspid.ru/private.php","_self");
         } else {
             alert("Вы не член команды \"АСПИД МСК\"");
         }
@@ -43,14 +46,6 @@ function renewList(){
             success: function(response) { console.log("SETTED!" + response); },
             error: function(response) { console.log("***ERROR***\n" + response + "\n*** *** ***"); }
         });
-        /*
-         if(r.response[0].member == 1) {
-         writeMyNameToCookies();
-         window.open("http://msk-aspid.strikeball-team.ru/private.php","_self");
-         } else {
-         alert("Вы не член команды \"АСПИД МСК\"");
-         }
-         */
     });
 }
 
@@ -102,4 +97,8 @@ function setToSession(param,val){
         success: function(response) { console.log("SETTED!" + response); },
         error: function(response) { console.log("***ERROR***\n" + response + "\n*** *** ***"); }
     });
+}
+
+function log(param){
+    console.log(param);
 }

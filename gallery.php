@@ -41,16 +41,16 @@ require_once "classes/UserDAO.php";
     $auth = new AspidAuth();
     if($auth->checkRole("PHOTO_UPLOAD")){
         echo'
-    <row >
-        <form style="background-color: #245269; padding: 10px; width: 400px; border-radius: 5px; margin-bottom: 20px;"
-        enctype="multipart/form-data" action="phpscripts/savephoto.php" method="POST">
-            <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
-            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-            <!-- Название элемента input определяет имя в массиве $_FILES -->
-            Загрузить фотографию: <input name="upfile" type="file" />
-            <input type="submit" class="btn-group" value="Отправить" />
-        </form>
-    </row>
+            <row >
+                <form style="background-color: #245269; padding: 10px; width: 400px; border-radius: 5px; margin-bottom: 20px;"
+                enctype="multipart/form-data" action="phpscripts/savephoto.php" method="POST">
+                    <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                    <!-- Название элемента input определяет имя в массиве $_FILES -->
+                    Загрузить фотографию: <input name="upfile" type="file" />
+                    <input type="submit" class="btn-group" value="Отправить" />
+                </form>
+            </row>
     ';
     }
     ?>

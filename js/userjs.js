@@ -13,7 +13,7 @@ function processAllAspids(){
             console.log("MEMBERS: " + JSON.stringify(r.response.users))
             for(var i in r.response.users){
                 var uid = r.response.users[i];
-                pausecomp(500)
+                pausecomp(1000)
                 console.log("MEMBER: " + JSON.stringify(uid));
                 insertOrUpdateUser(uid);
             }
@@ -33,7 +33,7 @@ function insertOrUpdateUser(vkuid){
                 type: 'post',
                 data: { "vkuid": uid, "vkname": name},
                 success: function(response) { console.log(response); },
-                error: function() { console.log("***ERROR***\n" + response + "\n*** *** ***"); }
+                error: function(response) { console.log("***ERROR***\n" + JSON.stringify(response) + "\n*** *** ***"); }
             });
         }
     });
