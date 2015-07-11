@@ -32,7 +32,7 @@ require_once "classes/PrivateNavbar.php"
 
 <body>
 
-<?php Navbar::show('USTAV'); ?>
+<?php (new Navbar())->show('USTAV'); ?>
 
 <div class="container" style="padding-top: 40px;">
 

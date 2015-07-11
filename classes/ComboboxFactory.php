@@ -69,7 +69,7 @@ class ComboboxFactory {
     public function getItemGroupCombobox($selectedGroup, $uid, ItemGroupDictionary $dictionary){
 
         $groups = $dictionary->groups;
-        $selectedText = "нет ";
+        $selectedText = "Обязательное снаряжение ";
         $valuesHtml = "";
 
         foreach($groups as $group){
@@ -80,17 +80,14 @@ class ComboboxFactory {
         }
 
         return '
-        <div class="btn-group btn-item-group" uid="'.$uid.'">
-            <a class="btn btn-primary dropdown-toggle btn-select aspid-items-box aspdcombobox" data-toggle="dropdown" href="#" style="width: 250px;" >
-                ' .$selectedText.'<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu rank-combobox">
-                '.$valuesHtml.'
-                <li class="divider"></li>
-                <li><a group_id="0">Без звания</a></li>
-            </ul>
-        </div>
-
+            <div class="btn-group btn-item-group" group_id="1" uid="'.$uid.'">
+                <a class="btn btn-primary dropdown-toggle btn-select aspid-items-box aspdcombobox" data-toggle="dropdown" href="#" style="width: 250px;" >
+                    ' .$selectedText.'<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu rank-combobox">
+                    '.$valuesHtml.'
+                </ul>
+            </div>
         ';
     }
 

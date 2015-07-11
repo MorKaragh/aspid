@@ -25,7 +25,7 @@ require_once "classes/PrivateNavbar.php"
 
 <body>
 
-<?php Navbar::show('USTAV'); ?>
+<?php (new Navbar())->show('USTAV'); ?>
 
 <div class="container" style="padding-top: 40px;">
 
@@ -92,7 +92,7 @@ require_once "classes/PrivateNavbar.php"
                 echo
                     '   <tr class="">
                         <td data-title="#">' . $i++ . '</td>
-                        <td data-title="Имя в VK" class="vknametablecell">' . $row['username'] . '</td>
+                        <td data-title="Имя в VK" class="vknametablecell"><a href="http://vk.com/id'.$row['vkuid'].'">' . $row['username'] . '</a></td>
                         <td data-title="Позывной">'.$nickname.'</td>
                         <td data-title="Группа">'.$group.'</td>
                         <td data-title="Звание">'.$rank.'</td>

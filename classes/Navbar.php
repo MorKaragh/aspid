@@ -8,12 +8,19 @@
 ini_set("display_errors",1);
 error_reporting(E_ALL);
 
-require_once "classes/NavbarButton.php";
+require_once "NavbarButton.php";
+require_once "AspidAuth.php";
 
 class Navbar {
 
 
-    public static function show($pageType)
+    var $auth;
+
+    public function __construct(){
+        $this->auth = new AspidAuth();
+    }
+
+    public function show($pageType)
     {
 
         $ustavButton = new NavbarButton('Устав');
@@ -31,21 +38,21 @@ class Navbar {
         $enterVkButton = new NavbarButton('Войти через Вконтакте');
         $enterVkButton->setLink('private.php');
 
-        $cabinetButton = '<a onclick="enterVk();" >Войти через VK</a>';
-        $regCabinetButton = '<a onclick="enterReg();" data-toggle="modal" data-target="#login-modal">Войти по регистрации</a>';
-//        if($_COOKIE['aspid_member_name']){
-//            $cabinetButton = '<a href="#" onclick="enterVk();" >'.rawurldecode($_COOKIE['aspid_member_name']).'</a>';
-//        }
+        $user = $this->auth->authOpenAPIMember();
+        if($user){
+            $cabinetButton = '<li id="cabinetBtn"><a href="private.php" >Личный Кабинет ('.($user['nickname']=='' ? $user['name'] : $user['nickname']).')</a></li>';
+            $loginButton = '';
+        } else {
+            $cabinetButton = '';
+            $loginButton = '<li id="authBtn"><a onclick="enterVk();" >Войти через VK</a></li>';
+        }
+
         if(!isset($_SESSION)){
             session_start();
-        }
-        if(isset($_SESSION['aspid_member_name'])){
-            $cabinetButton = '<a href="#" onclick="enterVk();" >'.$_SESSION['aspid_member_name'].' (Личный кабинет)</a>';
         }
 
         $bodyHtml =
         '
-
 <nav class="navbar navbar-default navbar-fixed-top" style="">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -67,8 +74,8 @@ class Navbar {
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right" >
-                            <li id="authBtn">'.$cabinetButton.'</li>
-                            <li id="regAuthButton">'.$regCabinetButton.'</li>
+                            '.$loginButton.'
+                            '.$cabinetButton.'
                     </ul>
                 </div>
             </div>
@@ -77,12 +84,12 @@ class Navbar {
 
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	  <div class="aspid-login modal-dialog">
-				<div class="aspid-login loginmodal-container" style="background-color: rgb(233, 237, 197); padding: 15px; border-radius: 10px;">
-					<h1>Вход на сайт</h1><br>
+				<div class="aspid-login loginmodal-container" style="padding: 15px; border-radius: 10px;">
+					<h1 style="color:black;">Вход на сайт</h1><br>
 				  <form method="post" action="phpscripts/login.php">
 					<input type="text" name="user" placeholder="Логин">
 					<input type="password" name="pass" placeholder="Пароль">
-					<input type="submit" name="login" class="login loginmodal-submit" value="Войти">
+					<input type="submit" name="login" class="login loginmodal-submit" style="color:black;" value="Войти">
 				  </form>
                     <!--
 				  <div class="login-help">

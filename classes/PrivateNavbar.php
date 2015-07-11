@@ -51,30 +51,48 @@ class PrivateNavbar {
 
             echo '<div class="private-navbar blackblock">';
 
-            $itemBlock = addslashes(
-                '<div class="item-block">'.
-                    '<input uid="" type="text" placeholder="название предмета" class="darktextinput inventory-text-input" />'.
-                    '<input uid="" type="text" placeholder="ссылка" class="darktextinput inventory-text-input" />'.
-                    '<textarea class="form-control darktextinput item-description" rows="3" placeholder="подробное описание"></textarea>'.
-                '</div>'
-            );
+            $itemBlock = $this->getItemBlock();
 
             echo '
                 <button type="button" id="addNewInventoryItemBtn" class="btn btn-labeled btn-primary" style="width:180px;">
-                    <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span><span id="captionRefresh">Добавить предмет</span></button>
+                    <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span><span>Добавить предмет</span></button>
 
-'.$comboboxFactory->getItemGroupCombobox(null,null,$itemGroupDictionary).'
-
+                    '.$comboboxFactory->getItemGroupCombobox(null,null,$itemGroupDictionary).'
                 <script>
                     $("#addNewInventoryItemBtn").click(function(){
                         $("#inventoryContainer").append("'.$itemBlock.'");
-                        alert($(".dropdown-toggle.aspid-items-box").text());
+                        var typeId = $(".dropdown-menu.rank-combobox li a").parents(".btn-item-group").attr("group_id");
+                        setClassForBlock(typeId);
                     });
+
+                    function setClassForBlock(groupId){
+                        if(groupId == 1){
+                            $(".item-block").last().addClass("item-block-essential");
+                        } else if(groupId == 2){
+                            $(".item-block").last().addClass("item-block-needed");
+                        }
+                    }
+
+                    $(".darktextinput.inventory-text-input.iname").blur(function(){
+                            alert("!");
+                        }
+                    );
                 </script>
             ';
         }
-
         echo '</div>';
+    }
+
+
+    private function getItemBlock(){
+        $result = addslashes(
+            '<div class="item-block">'.
+                '<input uid="" type="text" placeholder="название предмета" class="darktextinput inventory-text-input iname" />'.
+                '<input uid="" type="text" placeholder="ссылка" class="darktextinput inventory-text-input i-link" />'.
+                '<textarea class="form-control darktextinput item-description" rows="3" placeholder="подробное описание"></textarea>'.
+            '</div>'
+        );
+        return $result;
     }
 
 }

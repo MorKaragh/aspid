@@ -53,7 +53,7 @@ if(!isset($_SESSION)){
 </script>
 
 
-<button class="btn btn-primary" onclick="window.location.replace('https://oauth.vk.com/authorize?client_id=4953382&scope=notify&redirect_uri=msk-aspid.strikeball-team.ru/integration.php&response_type=code&v=5.34&state=SESSION_STATE');">Войти</button>
+<button class="btn btn-primary" onclick="window.location.replace('https://oauth.vk.com/authorize?client_id=4953382&scope=notify&redirect_uri=msk-aspid.ru/integration.php&response_type=code&v=5.34&state=SESSION_STATE');">Войти</button>
 
 <button class="btn btn-primary" onclick="alertUserName(myuid);">За кого залогинились?</button>
 

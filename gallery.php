@@ -29,7 +29,7 @@ require_once "classes/UserDAO.php";
 
 <body style="background-color:rgba(0,13,0,0.99);">
 
-<?php Navbar::show('USTAV'); ?>
+<?php (new Navbar())->show('USTAV'); ?>
 <br/><br/>
 <br/><br/>
 

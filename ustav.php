@@ -17,7 +17,7 @@ if(!isset($_SESSION)){
 <script src="js/bootstrap.min.js"></script>
 
 
-<?php Navbar::show('USTAV'); ?>
+<?php (new Navbar())->show('USTAV'); ?>
 <div class="container block">
     <div class="row-fluid">
         <div class="span5 offsetHalf">
@@ -467,7 +467,7 @@ if(!isset($_SESSION)){
                 <li><p>Перед приобретением игрового оружия и снаряжения, рекомендуется проконсультироваться с
                     руководством Команды</p></li>
 </ol>
-                <p class="P4">Командир, МСК «АСПИД» Доктор 20.03.2015г.</p>
+                <strong><p class="text-right">Командир МСК «АСПИД» Доктор 20.03.2015г.</p></strong>
 
 
             </div>

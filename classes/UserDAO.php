@@ -48,6 +48,9 @@ class UserDAO extends CoreDAO {
 
     public function getUserByVkId($vkId){
         $result =  parent::execQuery("select * from public.aspid_users where vkuid = ?",array($vkId));
+        if(!isset($result[0])){
+            return null;
+        }
         return $result[0];
     }
 

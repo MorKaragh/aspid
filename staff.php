@@ -18,7 +18,7 @@ if(!isset($_SESSION)){
 <body>
 
 <?php
-Navbar::show('USTAV');
+(new Navbar())->show('USTAV');
 $presenter = new StaffPresenter();
 
 ?>

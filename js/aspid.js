@@ -15,7 +15,7 @@ function enterVk(){
 function loggin(response){
     alert(JSON.stringify(VK.Auth.getSession()));
 }
-
+/*
 function isAspid(uid){
     console.log("=============== enter isAspid ===============");
     console.log("uid = "+uid);
@@ -30,7 +30,7 @@ function isAspid(uid){
         }
     });
 }
-
+*/
 function renewList(){
     VK.init({
         apiId: 4978729
@@ -49,28 +49,16 @@ function renewList(){
     });
 }
 
-function isAspid2(uid){
-    console.log("=============== enter isAspid2 ===============");
-    console.log("uid = "+uid);
-    VK.Api.call('groups.isMember', {gid:"msk_aspid", uids: uid}, function(r) {
-        if(r.response[0].member == 1) {
-            alert("OK!");
-        } else {
-            alert("Вы не член команды \"АСПИД МСК\"");
-        }
-    });
-}
-
 function enterRange(response){
     console.log("=============== enterRange ===============");
     console.log(JSON.stringify(response));
     var uid = response.session.user.id;
     if(response.status == "connected"){
         console.log("*****========== we are connected ==========*****");
-        isAspid(uid);
+        window.open("http://msk-aspid.ru/private.php","_self");
     }
 }
-
+/*
 function writeMyNameToCookies(){
     console.log("=============== writeMyNameToCookies ===============");
     sessionData = VK.Auth.getSession();
@@ -79,7 +67,7 @@ function writeMyNameToCookies(){
     $("#authBtn").html('<a href="#" onclick="enterVk();" >"+name+"</a>');
     setToSession("aspid_member_name",name);
 }
-
+*/
 function setCookie (name, value, expires, path, domain, secure) {
     document.cookie = name + "=" + escape(value) +
     ((expires) ? "; expires=" + expires : "") +

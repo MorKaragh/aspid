@@ -1,6 +1,7 @@
 
 
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:200,300');
+@import "loginwindow.css";
 
 html,body,section{height:100%;}
 
@@ -205,7 +206,11 @@ a:link, a:visited {
         left: -9999px;
     }
 
-    #no-more-tables tr { border: 1px solid #ccc; }
+    #no-more-tables tr {
+        border: 1px solid #225819;
+        border-bottom: 5px dotted #f0ad4e;
+        margin-bottom: 20px;
+    }
 
     #no-more-tables td {
         /* Behave  like a "row" */
@@ -325,6 +330,14 @@ a:link, a:visited {
     margin-bottom: 40px;
 }
 
+.item-block-essential{
+    border: 1px solid #ac2925;
+}
+
+.item-block-needed{
+    border: 1px solid #f0ad4e;
+}
+
 .inventory-text-input{
     margin: 5px;
 }
@@ -347,8 +360,3 @@ a:link, a:visited {
     width: 100%;
 }
 
-.aspid-login{
-    background-color: #b9b9b9 !important;
-    padding: 20px !important;
-    border-radius: 10px !important;
-}

@@ -9,4 +9,6 @@
 require_once "../classes/UserDAO.php";
 require_once "../classes/AspidAuth.php";
 
+var_dump($_POST);
+
 ?>

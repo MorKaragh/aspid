@@ -13,13 +13,17 @@ function processAllAspids(){
             console.log("MEMBERS: " + JSON.stringify(r.response.users))
             for(var i in r.response.users){
                 var uid = r.response.users[i];
-                pausecomp(1000)
+                pausecomp(500)
                 console.log("MEMBER: " + JSON.stringify(uid));
                 insertOrUpdateUser(uid);
             }
         }
-        location.reload(true);
+        setTimeout(refResh,1000);
     });
+}
+
+function refResh(){
+    location.reload(true);
 }
 
 function insertOrUpdateUser(vkuid){

@@ -82,13 +82,24 @@ try {
         throw new RuntimeException('Failed to move uploaded file.');
     }
 
+
     $resizer = new SimpleImage();
-    $resizer->load(    sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/%s.%s',
+/*
+$resizer->load(    sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/%s.%s',
+    finalname,
+    $ext
+));
+$resizer->resizeToWidth(200);
+$resizer->save(sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/thumbs/%s.%s',
+    finalname,
+    $ext
+));
+*/
+
+    $resizer->resize_crop_image(200,200,sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/%s.%s',
         finalname,
         $ext
-    ));
-    $resizer->resizeToHeight(200);
-    $resizer->save(sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/thumbs/%s.%s',
+    ),sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/thumbs/%s.%s',
         finalname,
         $ext
     ));

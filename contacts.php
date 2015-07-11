@@ -25,7 +25,7 @@ if(!isset($_SESSION)){
     });
 </script>
 
-<?php Navbar::show('USTAV'); ?>
+<?php (new Navbar())->show('USTAV'); ?>
 <div class="container block_fullscreen">
     <div class="row block" style="height: 100%">
 
