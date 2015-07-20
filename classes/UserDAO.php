@@ -8,6 +8,8 @@
 ini_set("display_errors",1);
 error_reporting(E_ALL);
 require_once "CoreDAO.php";
+require_once "Achievement.php";
+
 
 class UserDAO extends CoreDAO {
 
@@ -19,6 +21,11 @@ class UserDAO extends CoreDAO {
 
     public function getAllActiveUsers(){
         $result = parent::execQuery("select * from public.aspid_users where is_active != 6 or is_active is null order by coalesce(is_active,0), rank_id, uid",null);
+        return $result;
+    }
+
+    public function getAllActiveUsersOrderByAlphabet(){
+        $result = parent::execQuery("select * from public.aspid_users where is_active != 6 or is_active is null order by nickname",null);
         return $result;
     }
 

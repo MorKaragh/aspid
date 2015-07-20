@@ -20,10 +20,15 @@ if(!isset($_SESSION)){
     (new Navbar())->show('USTAV');
 ?>
 
-<div class="container block_fullscreen">
-    <div class="row block block_full block_fullscreen" style="padding: 20px;">
-        <div class="col-md-12 col-sm-12 col-centered">
-            <img src="img/logo.png" class="img-responsive"  style="padding: 20px; margin: 0 auto; height: 60%; width: 60%;"/>
+<div class="container-fluid block block_fullscreen" style="height: 100%;">
+    <div class="row" style="padding: 20px;">
+        <div class="col-md-5 col-sm-5">
+            <img src="img/logo.png" class="img-responsive"  style="padding: 20px; margin: 0 auto; height: auto; width: 360px;"/>
+        </div>
+        <div class="col-md-7 col-sm-7 index-presentation col-centered">
+            <h1>МСК "АСПИД"</h1>
+            <h3>Страйкбольная команда. Город Москва.</h3>
+            <h5>Моделирование собирательного образа Спецназа РФ.</h5>
         </div>
     </div>
 <!--    <div class="row block staff-main-block"  >-->

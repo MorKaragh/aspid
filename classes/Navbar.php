@@ -40,7 +40,25 @@ class Navbar {
 
         $user = $this->auth->authOpenAPIMember();
         if($user){
-            $cabinetButton = '<li id="cabinetBtn"><a href="private.php" >Личный Кабинет ('.($user['nickname']=='' ? $user['name'] : $user['nickname']).')</a></li>';
+
+            if($this->auth->checkRole("COMMANDER")){
+                $reportButton = '<li><a href="reports.php">Отчеты</a></li>';
+            }
+
+            $cabinetButton = '
+
+          <li  id="cabinetBtn" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Личный Кабинет ('.($user['nickname']=='' ? $user['name'] : $user['nickname']).') <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="private.php">Моя команда</a></li>
+            <li><a href="inventory.php">Мое снаряжение</a></li>
+            '.$reportButton.'
+          </ul>
+        </li>
+            ';
+
+
+
             $loginButton = '';
         } else {
             $cabinetButton = '';

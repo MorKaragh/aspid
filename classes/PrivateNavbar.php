@@ -11,7 +11,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 require_once 'AspidAuth.php';
-require_once "classes/ComboboxFactory.php";
+require_once "ComboboxFactory.php";
 
 class PrivateNavbar {
 
@@ -49,7 +49,7 @@ class PrivateNavbar {
     public function showInventoryBar(AspidAuth $aspidAuth, ComboboxFactory $comboboxFactory, ItemGroupDictionary $itemGroupDictionary){
         if($aspidAuth->checkRole("COMMANDER")) {
 
-            echo '<div class="private-navbar blackblock">';
+            echo '<div class="private-navbar">';
 
             $itemBlock = $this->getItemBlock();
 
@@ -71,12 +71,8 @@ class PrivateNavbar {
                         } else if(groupId == 2){
                             $(".item-block").last().addClass("item-block-needed");
                         }
+                        $(".item-block").last().find(".i-type").val(groupId);
                     }
-
-                    $(".darktextinput.inventory-text-input.iname").blur(function(){
-                            alert("!");
-                        }
-                    );
                 </script>
             ';
         }
@@ -87,9 +83,10 @@ class PrivateNavbar {
     private function getItemBlock(){
         $result = addslashes(
             '<div class="item-block">'.
-                '<input uid="" type="text" placeholder="название предмета" class="darktextinput inventory-text-input iname" />'.
-                '<input uid="" type="text" placeholder="ссылка" class="darktextinput inventory-text-input i-link" />'.
-                '<textarea class="form-control darktextinput item-description" rows="3" placeholder="подробное описание"></textarea>'.
+                '<input name="itemname" type="text" placeholder="название предмета" class="darktextinput inventory-text-input iname" />'.
+                '<input name="itemlink" type="text" placeholder="ссылка" class="darktextinput inventory-text-input i-link" />'.
+                '<input name="itemtypeid" type="hidden" placeholder="тип" class="i-type" />'.
+                '<textarea name="itemdescr" class="form-control darktextinput item-description" rows="3" placeholder="подробное описание"></textarea>'.
             '</div>'
         );
         return $result;

@@ -24,7 +24,7 @@ $presenter = new StaffPresenter();
 ?>
 
 
-<div class="container" style="padding-top: 40px;">
+<div class="container-fluid" style="padding-top: 40px;">
 
     <div class="row block staff-main-block"  >
         <div class="col-md-offset-3 col-md-6 col-centered group-main-image">

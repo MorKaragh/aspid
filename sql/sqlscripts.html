@@ -10,7 +10,6 @@
 
 CREATE SEQUENCE aspid_uid_seq;
 
-
 create table aspid_users(uid INTEGER NOT NULL default nextval('aspid_uid_seq'),
 vkuid integer,
 username varchar(150)
@@ -85,6 +84,42 @@ insert into item_groups(id, group_name) values (3,'Рекомендованно�
 
 alter table aspid_users add column login varchar(100);
 alter table aspid_users add column passwd varchar(1000);
+
+CREATE SEQUENCE aspid_inventory_items_seq;
+
+create table aspid_inventory_items(
+    id INTEGER NOT NULL default nextval('aspid_inventory_items_seq'),
+    item_name varchar(200),
+    item_link varchar(150),
+    item_description varchar(4000),
+    item_group_id integer references item_groups
+);
+
+ALTER TABLE aspid_inventory_items ADD CONSTRAINT inv_items_pk PRIMARY KEY (id);
+create table aspid_user_inventory(uid integer references aspid_users, item_id integer references aspid_inventory_items, respond_comment varchar(4000), have_status integer);
+create index idx_usr_inventory on aspid_user_inventory(uid);
+create index idx_usr_inventory_itm on aspid_user_inventory(item_id);
+ALTER TABLE aspid_user_inventory ADD COLUMN ins_date date default current_timestamp;
+
+
+create table aspid_achievement_type(
+	id integer primary key,
+	name varchar(100)
+);
+
+create table aspid_achievements
+(
+    id integer primary key,
+    name varchar(400),
+    description varchar (4000),
+    uid integer references aspid_users,
+    from_who integer references aspid_users,
+    date_give date default current_date,
+    type integer references aspid_achievement_type
+);
+
+insert into aspid_achievement_type(id,name) values(1,'Достижение');
+insert into aspid_achievement_type(id,name) values(2,'За особые заслуги');
 -->
 
 </body>

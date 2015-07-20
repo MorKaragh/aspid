@@ -3,47 +3,7 @@
 @import "loginwindow.css";
 
 html,body,section{height:100%;}
-/* Код для подключения шрифта в /css/stylename.css */
-/* font-family: "RobotoRegular"; */
-@font-face {
-    font-family: "RobotoRegular";
-    src: url("../fonts/RobotoRegular/RobotoRegular.eot");
-    src: url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/RobotoRegular/RobotoRegular.woff") format("woff"),
-    url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-/* font-family: "RobotoLight"; */
-@font-face {
-    font-family: "RobotoLight";
-    src: url("../fonts/RobotoLight/RobotoLight.eot");
-    src: url("../fonts/RobotoLight/RobotoLight.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/RobotoLight/RobotoLight.woff") format("woff"),
-    url("../fonts/RobotoLight/RobotoLight.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-/* font-family: "RobotoMedium"; */
-@font-face {
-    font-family: "RobotoMedium";
-    src: url("../fonts/RobotoMedium/RobotoMedium.eot");
-    src: url("../fonts/RobotoMedium/RobotoMedium.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/RobotoMedium/RobotoMedium.woff") format("woff"),
-    url("../fonts/RobotoMedium/RobotoMedium.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-/* font-family: "RobotoBold"; */
-@font-face {
-    font-family: "RobotoBold";
-    src: url("../fonts/RobotoBold/RobotoBold.eot");
-    src: url("../fonts/RobotoBold/RobotoBold.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/RobotoBold/RobotoBold.woff") format("woff"),
-    url("../fonts/RobotoBold/RobotoBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
+
 body {
     background: url('../img/background1200yellow.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -53,10 +13,14 @@ body {
     min-height: 800px;
     color:#eee;
     background-color:#333;
-    /*font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;*/
-    font-family: roboto;
-
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
     overflow: scroll;
+}
+
+body.private-body {
+    background-color:rgba(0,13,0,0.9) !important;
+    color:#eee;
+    background-image: none !important;
 }
 
 a:link, a:visited {
@@ -385,7 +349,6 @@ a:link, a:visited {
 
 .item-block{
     border: 2px solid #225819;
-    background-color: #062104;
     border-radius: 5px;
     height: auto;
     width: 475px;
@@ -505,8 +468,3 @@ textarea {
     margin-top: 10px;
 }
 
-
-.btn-radio-inventory.active{
-    background-color: #f0ad4e !important;
-    color:#000000;
-}

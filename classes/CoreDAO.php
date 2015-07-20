@@ -8,6 +8,8 @@
 ini_set("display_errors",1);
 error_reporting(E_ALL);
 
+require_once 'dictionary/Dictionary.php';
+
 class CoreDAO {
 
 
@@ -122,6 +124,15 @@ class CoreDAO {
          "error" : "'.$err.'"
         }';
         exit;
+    }
+
+    public function getDictionary($table){
+        $query = "SELECT * FROM ".$table;
+        $set = $this->execQuery($query,null);
+        $dictionary = new Dictionary();
+        foreach($set as $row){
+            $dictionary->addItem($row[0],$row[1]);
+        }
     }
 
 }

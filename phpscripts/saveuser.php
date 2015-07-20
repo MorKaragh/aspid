@@ -18,13 +18,11 @@ if ($_POST != null) {
     }
 
     $userDao = new UserDAO();
-    $userDao->debugLog($_POST['vkuid'].'---'.$_POST['vkname']);
 
     if(isset($_POST['jsn'])){
         $membersInBase = $userDao->getAllActiveUsers();
         foreach($membersInBase as $member){
             if(!in_array($member['vkuid'],json_decode($_POST['jsn']))){
-                $userDao->debugLog($member['vkuid']);
                 $userDao->setUserStatusByVkuid($member['vkuid'],6);
             }
         }

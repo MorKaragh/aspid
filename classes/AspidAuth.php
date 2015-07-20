@@ -73,7 +73,8 @@ class AspidAuth {
                     'sid' => $session['sid'],
                     'name' => $user['username'],
                     'nickname' => $user['nickname'],
-                    'vklink' => 'http://vk.com/id'.$user['vkuid']
+                    'vklink' => 'http://vk.com/id'.$user['vkuid'],
+                    'uid' => $user['uid']
                 );
             }
         }

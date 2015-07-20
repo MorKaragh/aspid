@@ -104,7 +104,7 @@ $resizer->save(sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/
         $ext
     ));
 
-    echo 'File is uploaded successfully.';
+    echo '<script>location.reload();</script>';
 
 } catch (RuntimeException $e) {
 

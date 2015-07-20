@@ -12,7 +12,9 @@ require_once "classes/UserDAO.php";
 require_once "classes/ComboboxFactory.php";
 require_once "classes/dictionary/GroupDictionary.php";
 require_once "classes/dictionary/RankDictionary.php";
-require_once "classes/PrivateNavbar.php"
+require_once "classes/PrivateNavbar.php";
+require_once "classes/WarningsAndErrors.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ require_once "classes/PrivateNavbar.php"
 
 <?php (new Navbar())->show('USTAV'); ?>
 
-<div class="container" style="padding-top: 40px;">
+<div class="container-fluid blackblock lowerblock" style="padding-top: 40px; height: 100%;">
 
 <div class="row">
 
@@ -53,7 +55,7 @@ require_once "classes/PrivateNavbar.php"
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Имя в VK</th>
+                    <th>Вконтакте</th>
                     <th>Позывной</th>
                     <th>Группа</th>
                     <th>Должность</th>
@@ -92,8 +94,8 @@ require_once "classes/PrivateNavbar.php"
                 echo
                     '   <tr class="">
                         <td data-title="#">' . $i++ . '</td>
-                        <td data-title="Имя в VK" class="vknametablecell"><a href="http://vk.com/id'.$row['vkuid'].'">' . $row['username'] . '</a></td>
-                        <td data-title="Позывной">'.$nickname.'</td>
+                        <td data-title="Вконтакте" class="vknametablecell"><a href="http://vk.com/id'.$row['vkuid'].'">' . $row['username'] . '</a></td>
+                        <td data-title="Позывной" class="vknametablecell" >'.$nickname.'</td>
                         <td data-title="Группа">'.$group.'</td>
                         <td data-title="Звание">'.$rank.'</td>
                     </tr>
@@ -111,10 +113,8 @@ require_once "classes/PrivateNavbar.php"
 
 
     } else {
-        echo '
-                <div class="col-md-12 col-centered block"><h1>Доступ сюда разрешен только членам команды!</h1>
-                <br/><h3>Вы не являетесь членом команды или не вошли на сайт.</h3></div>
-              ';
+        echo '<div style="height: 100%" class="col-md-12 blackblock lowerblock">'.WarningsAndErrors::getNonTeamError().'</div>';
+
     }
 
     ?>

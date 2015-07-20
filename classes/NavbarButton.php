@@ -6,7 +6,7 @@
  * Time: 19:13
  */
 
-require_once "classes/Navbar.php";
+require_once "Navbar.php";
 
 class NavbarButton {
     var $html;
