@@ -132,7 +132,7 @@ $presenter = new StaffPresenter();
     </script>
 
 
-    <div id="profile" class="staff-member-block">
+    <div id="profile" class="print-profile-block">
 
         тут будет подробная информация по бойцу. Фотография в горке и сумраке, специализация и тому подобное. Напишите Джинну что бы вы хотели тут видеть.
 

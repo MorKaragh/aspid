@@ -20,20 +20,21 @@ if(isset($_POST['uid'])){
 
     function buildAchievementsBlock($achi){
         if(empty($achi)){
-            return;
+            return '';
         }
-        echo '<div style = "float:right;" class="reward-block">';
+        $result = '<div class="achievements-block">';
         foreach($achi as $achievement){
-            echo '<p>награды</p>
+            $result = $result.'
                   <div class="achievement-icon">
-                        <img src="img/logo30norm.png" title="'.$achievement->name.'"/>
+                        <img src="img/logoLavr75.png" title="'.$achievement->name.'"/>
                         <input class="achievement-description" type="hidden" value="'.$achievement->description.'" />
                         <input class="achievement-fromwho" type="hidden" value="'.$achievement->fromWhoName.'" />
                         <input class="achievement-date" type="hidden" value="'.(new DateTime($achievement->dateGive))->format('d.m.Y').'" />
                         <input class="achievement-name" type="hidden" value="'.$achievement->name.'" />
                   </div>';
         }
-        echo '</div>
+        $result = $result. '
+                    </div>
                     <script>
                             $(".achievement-icon").click(
                                 function(){
@@ -52,23 +53,48 @@ if(isset($_POST['uid'])){
                     );
                     </script>
                     ';
+
+        return $result;
     }
+
+
 
 
     if($member){
         $row = $dao->getUser($_POST['uid']);
+
+        $avatar = $dao->getAvatarPath($_POST['uid']);
+
+        if(!empty($avatar)){
+            $avatar = '<img class="avatar" src="'.$avatar.'" />';
+        } else {
+            $avatar = '';
+        }
+
+
         echo '
         <div class="container">
+
             <div class="row">
-                <div class="col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                    бла бла бла
+
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 item-link-ahref">
+
+                    <div class="profile-contacts">
+                    <div>
+                        <span>VK: <a href="http://vk.com/id'.$row['vkuid'].'">' . $row['username'] . '</a></span>
+                    </div>
+                    <div>
+                        <span>Телефон: <span class="contact-info">999-999-999</span></span>
+                    </div>
+                    </div>
+
                 </div>
-                <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4 item-link-ahref">
-                    <a href="http://vk.com/id'.$row['vkuid'].'">VK: ' . $row['username'] . '</a>
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12" style="padding-right: 80px;">
+                    '.$avatar.'
                 </div>
             </div>
             <div class="row">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                 '.buildAchievementsBlock($achies).'
             </div>
             </div>

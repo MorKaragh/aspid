@@ -54,19 +54,13 @@ require_once "classes/WarningsAndErrors.php";
                 $avatar = '';
             }
 
-            /**
 
 
-            <form style="margin: 20px 0px 0px 0px;" class="uploader-file upava" enctype="multipart/form-data" class="upava">
-            <input name="upfile" type="file" />
-            <input type="hidden" name="sizeX" value="70" />
-            <input type="hidden" name="sizeY" value="70" />
-            <input type="hidden" name="uplpath" value="/home/m/meworyru/strikeball/msk-aspid/public_html/avatars/%s.%s" />
-            <input type="button" style="margin-top:15px; color:black;" value="ЗАГРУЗИТЬ" class="btn-warning btn-upload"/>
-            </form>
 
 
-             */
+
+
+
 
             echo '
                 <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" style="padding-top: 40px;">
@@ -81,7 +75,13 @@ require_once "classes/WarningsAndErrors.php";
                     <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
                         <h5>загрузка аватары</h5>
 
-                        не сейчас!
+                        <form style="margin: 20px 0px 0px 0px;" class="uploader-file upava" enctype="multipart/form-data" class="upava">
+                        <input name="upfile" type="file" />
+                        <input type="hidden" name="sizeX" value="150" />
+                        <input type="hidden" name="sizeY" value="250" />
+                        <input type="hidden" name="uplpath" value="/home/m/meworyru/strikeball/msk-aspid/public_html/avatars/%s.%s" />
+                        <input type="button" style="margin-top:15px; color:black;" value="ЗАГРУЗИТЬ" class="btn-warning btn-upload"/>
+                        </form>
                     </div>
                     </div>
                     <div class="row">
