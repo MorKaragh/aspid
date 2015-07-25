@@ -230,7 +230,7 @@ a:link, a:visited {
 .staff-member-block{
     border: 1px solid #1a4413;
     background-color:rgba(0,13,0,0.5);
-    padding: 15px 30px 15px 30px;
+    padding: 15px 30px 15px 15px;
     margin-bottom: 5px;
     border-radius: 5px;
     color: #C3C089;
@@ -509,4 +509,59 @@ textarea {
 .btn-radio-inventory.active{
     background-color: #f0ad4e !important;
     color:#000000;
+}
+
+.achievement-icon{
+    margin-left: 5px;
+    border: 1px solid transparent;
+    float:right;
+}
+
+.achievement-icon:hover {
+    text-decoration	: none;
+    border:1px solid #225819;
+    border-radius: 5px;
+}
+
+.achievement-modal{
+    background-color: #081506;
+    width: 500px;
+    height: 300px;
+    alignment: center;
+    margin-left: 50px;
+    margin-top: 50px;
+    color: #C3C089;
+}
+
+.achievement-modal .modal-body{
+    font-style: italic;
+    color: #C2C2C2;
+    font-weight: lighter;
+}
+
+.btn{
+    color:black;
+}
+
+.uploader-file{
+    background-color:#225819;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.avatar{
+    border-radius: 10px;
+}
+
+.reward-block{
+    margin: 6px;
+    max-width: 200px;
+    border: 1px solid #062104;
+    background-color:rgba(0,13,0,0.5);
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+    color:#8a6d3b;
+    height: 90px;
 }

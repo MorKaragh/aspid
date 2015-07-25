@@ -43,7 +43,7 @@ require_once "classes/UserDAO.php";
         echo'
             <row >
                 <form target="receiver" style="background-color:#67b168; padding: 10px; width: 400px; border-radius: 5px; margin-bottom: 20px;"
-                enctype="multipart/form-data" action="phpscripts/savephoto.php" method="POST">
+                enctype="multipart/form-data" action="phpscripts/savephoto.php" method="POST" target="_self">
                     <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                     <!-- Название элемента input определяет имя в массиве $_FILES -->

@@ -107,9 +107,11 @@ create table aspid_achievement_type(
 	name varchar(100)
 );
 
+CREATE SEQUENCE aspid_achievements_seq;
+
 create table aspid_achievements
 (
-    id integer primary key,
+    id integer primary key default nextval('aspid_achievements_seq'),
     name varchar(400),
     description varchar (4000),
     uid integer references aspid_users,
@@ -120,6 +122,8 @@ create table aspid_achievements
 
 insert into aspid_achievement_type(id,name) values(1,'Достижение');
 insert into aspid_achievement_type(id,name) values(2,'За особые заслуги');
+
+create table user_avatar(uid integer references aspid_users, path varchar(1000));
 -->
 
 </body>

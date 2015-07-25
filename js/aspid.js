@@ -55,7 +55,7 @@ function enterRange(response){
     var uid = response.session.user.id;
     if(response.status == "connected"){
         console.log("*****========== we are connected ==========*****");
-        window.open("http://msk-aspid.ru/private.php","_self");
+        window.open("http://msk-aspid.ru/profile.php","_self");
     }
 }
 /*

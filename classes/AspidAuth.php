@@ -96,4 +96,7 @@ class AspidAuth {
         }
     }
 
+    public function getUsetDao(){
+        return $this->userDao;
+    }
 }

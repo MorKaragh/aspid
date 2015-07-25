@@ -23,11 +23,23 @@ try {
 
     // Undefined | Multiple Files | $_FILES Corruption Attack
     // If this request falls under any of them, treat it invalid.
+
+    $uploadpath = '/home/m/meworyru/strikeball/msk-aspid/public_html/album/%s.%s';
+    $resizepath = '/home/m/meworyru/strikeball/msk-aspid/public_html/album/thumbs/%s.%s';
+    $sizeX = 175;
+    $sizeY = 175;
+
+    if(isset($_POST['uplpath']) && isset($_POST['sizeX']) && isset($_POST['sizeY'])){
+        $uploadpath = $resizepath = $_POST['uplpath'];
+        $sizeX = $_POST['sizeX'];
+        $sizeY = $_POST['sizeY'];
+    }
+
     if (
         !isset($_FILES['upfile']['error']) ||
         is_array($_FILES['upfile']['error'])
     ) {
-        throw new RuntimeException('Не верные параметры.');
+        do_return(null,'Не верные параметры.');
     }
 
     // Check $_FILES['upfile']['error'] value.
@@ -35,17 +47,17 @@ try {
         case UPLOAD_ERR_OK:
             break;
         case UPLOAD_ERR_NO_FILE:
-            throw new RuntimeException('Выберите файл!');
+            do_return(null,'Выберите файл!');
         case UPLOAD_ERR_INI_SIZE:
         case UPLOAD_ERR_FORM_SIZE:
-            throw new RuntimeException('Файл слишком большой!');
+            do_return(null,'Файл слишком большой!');
         default:
-            throw new RuntimeException('Случилось хрен пойми что...');
+            do_return(null,'Случилось хрен пойми что...');
     }
 
     // You should also check filesize here.
     if ($_FILES['upfile']['size'] > 1000000) {
-        throw new RuntimeException('Слишком большой файл! '.$_FILES['upfile']['size']);
+        do_return(null,'Слишком большой файл!');
     }
 
     // DO NOT TRUST $_FILES['upfile']['mime'] VALUE !!
@@ -61,7 +73,7 @@ try {
             ),
             true
         )) {
-        throw new RuntimeException('Invalid file format.');
+        do_return(null,'Формат файла не известен!');
     }
 
 
@@ -74,12 +86,12 @@ try {
 
     if (!move_uploaded_file(
         $_FILES['upfile']['tmp_name'],
-        sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/%s.%s',
+        sprintf($uploadpath,
             finalname,
             $ext
         )
     )) {
-        throw new RuntimeException('Failed to move uploaded file.');
+        do_return(null,'Failed to move uploaded file.');
     }
 
 
@@ -96,20 +108,34 @@ $resizer->save(sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/
 ));
 */
 
-    $resizer->resize_crop_image(200,200,sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/%s.%s',
+    $resizer->resize_crop_image($sizeX, $sizeY,sprintf($uploadpath,
         finalname,
         $ext
-    ),sprintf('/home/m/meworyru/strikeball/msk-aspid/public_html/album/thumbs/%s.%s',
+    ),sprintf($resizepath,
         finalname,
         $ext
     ));
 
-    echo '<script>location.reload();</script>';
+
+    do_return(sprintf($resizepath,
+        finalname,
+        $ext
+    ),null);
 
 } catch (RuntimeException $e) {
 
     echo $e->getMessage();
 
+}
+
+
+function do_return($msg, $err){
+    echo '
+        {
+         "message" : "'.$msg.'",
+         "error" : "'.$err.'"
+        }';
+    exit;
 }
 
 ?>

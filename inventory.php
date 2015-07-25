@@ -201,32 +201,7 @@ require_once "classes/WarningsAndErrors.php";
                                 $(this).closest(".item-row").remove();
                             }
                         );
-/*
-                        if(forLastOnly){
-                            tmp = $(".darktextinput").slice(-3);
-                        } else {
-                            tmp = $(".darktextinput");
-                        }
 
-                        tmp.blur(
-                            function(){
-                                var everybodyIsFilled = true;
-                                console.log($(this));
-                                if($(this).val() == "" && !$(this).hasClass("i-link")){
-                                    everybodyIsFilled = false;
-                                } else {
-                                    $(this).val($(this).val());
-                                }
-                                $(this).siblings(".darktextinput.needed").each(function(){
-                                    if(this.value == ""){
-                                        everybodyIsFilled = false;
-                                    };
-                                });
-                                var form = $(this).parents("form").first();;
-                                saveItemToBase(form);
-                            }
-                        );
-*/
                         if(forLastOnly){
                             tmp = $(".save-item-button").last();
                         } else {

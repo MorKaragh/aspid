@@ -24,6 +24,11 @@ class UserDAO extends CoreDAO {
         return $result;
     }
 
+    public function getUser($uid){
+        $result = parent::execQuery("select * from public.aspid_users where uid = ?",array($uid));
+        return $result[0];
+    }
+
     public function getAllActiveUsersOrderByAlphabet(){
         $result = parent::execQuery("select * from public.aspid_users where is_active != 6 or is_active is null order by nickname",null);
         return $result;
@@ -87,6 +92,53 @@ class UserDAO extends CoreDAO {
 
     public function setUserStatusByVkuid($vkuid,$status){
         parent::execUpdate("UPDATE aspid_users SET is_active = ? WHERE vkuid = ?",array($status,$vkuid));
+    }
+
+    public function getAllUsers(){
+        $result = parent::execQuery("select * from public.aspid_users order by uid",null);
+        return $result;
+    }
+
+    public function getGroupMembersOrdered($id){
+        $query = "select * from aspid_users s, aspid_ranks a where a.id = s.rank_id and group_id = ? and s.nickname is not null and s.nickname <> '' and s.is_active = 1 order by a.hier_level, s.uid";
+        return parent::execQuery($query,array($id));
+    }
+
+    public function getUserAchievements($uid)
+    {
+        $result = [];
+        $query = "select aa.*,(select nickname from aspid_users s where s.uid = aa.from_who) from_who_name, (select nickname from aspid_users s where s.uid = aa.uid) to_who_name from aspid_achievements aa where  aa.uid = ?";
+        $set = parent::execQuery($query,array($uid));
+        foreach($set as $row){
+            array_push($result, new Achievement($row));
+        }
+        return $result;
+    }
+
+    public function giveAchievement($name, $description, $uid, $fromWho){
+        $query = "insert into public.aspid_achievements(name, description, uid, from_who, type) values (?,?,?,?,2)";
+        parent::execUpdate($query,array($name, $description, $uid, $fromWho));
+    }
+
+    public function setUserAvatar($uid,$path){
+        $query = "select * from public.user_avatar where uid = ?";
+        $set = parent::execQuery($query,array($uid));
+        if(!empty($set)){
+            $query = "update public.user_avatar set path = ? where uid = ?";
+            parent::execUpdate($query,array($path,$uid));
+        } else {
+            $query = "insert into public.user_avatar(uid,path) values (?,?)";
+            parent::execInsert($query,array($uid,$path));
+        }
+    }
+
+    public function getAvatarPath($uid){
+        $query = "select path from public.user_avatar where uid = ?";
+        $set = parent::execQuery($query,array($uid));
+        if(!empty($set)){
+            return str_replace("/home/m/meworyru/strikeball/msk-aspid/public_html/","",$set[0]['path']);
+        }
+        return null;
     }
 
 }
