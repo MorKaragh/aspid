@@ -14,10 +14,10 @@ class CoreDAO {
 
 
     var $connection;
-    var $username = "meworyru_strike";
-    var $password = "ntktajyBD";
-    var $dbname = "meworyru_strike";
-    var $host = "pg.sweb.ru";
+    var $username = "";
+    var $password = "";
+    var $dbname = "";
+    var $host = "";
     var $pdo;
 
     public function __construct(){
@@ -68,7 +68,7 @@ class CoreDAO {
      * connect to database
      **/
     protected function connect(){
-        $this->connection = pg_connect("host=pg.sweb.ru port=5432 dbname=meworyru_strike user=$this->username password=$this->password")
+        $this->connection = pg_connect("host=*** port=*** dbname=*** user=$this->username password=$this->password")
         or die("can not connect to database!");
     }
 
