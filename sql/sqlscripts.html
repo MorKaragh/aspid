@@ -124,6 +124,14 @@ insert into aspid_achievement_type(id,name) values(1,'Достижение');
 insert into aspid_achievement_type(id,name) values(2,'За особые заслуги');
 
 create table user_avatar(uid integer references aspid_users, path varchar(1000));
+
+create sequence personal_info_type_seq;
+create table personal_info_type (id integer default nextval('personal_info_type_seq') primary key, name varchar(100));
+
+insert into personal_info_type(name) values('телефон');
+insert into personal_info_type(name) values('профессия');
+
+create table aspid_personal_info(type_id integer references personal_info_type, uid integer references aspid_users, val varchar(4000));
 -->
 
 </body>

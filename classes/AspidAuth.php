@@ -60,8 +60,6 @@ class AspidAuth {
             $sign .= APP_SHARED_SECRET;
             $sign = md5($sign);
             if ($session['sig'] == $sign && $session['expire'] > time()) {
-
-                $this->userDao->debugLog(intval($session['mid']));
                 $user = $this->userDao->getUserByVkId(intval($session['mid']));
                 if($user == null || $user['is_active'] != 1){
                     return FALSE;

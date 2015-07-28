@@ -32,7 +32,7 @@ require_once "classes/Personalinfo.php";
     <script src="js/userjs.js" type="application/javascript"></script>
 </head>
 
-<body style="background-image: none; background-color: #000C00;">
+<body>
 
 <?php (new Navbar())->show('USTAV'); ?>
 
@@ -65,36 +65,14 @@ require_once "classes/Personalinfo.php";
 
                 </div>
 
-                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-9" style="margin: 0 -20px 0 20px;">
+                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12" style="margin: 0 0 0 20px;">
                     <h3 style="margin-top:40px; color: #FFF0A9;">' . $member['nickname'] . '</h3>
                     <p style="color: #FFF0A9;">' . $member['name'] . '</p>
-
-                        <form class="form-horizontal" id="personal-info-form">
-
-                    ';
-
-            //.$personal->getFormForEdit($member['uid']).
-
-            $info = $dao->getPersonalInfo($member['uid']);
-
-            foreach($info as $row){
-                echo '
-                      <div style="display: inline-block; margin-top:5px;">
-                        <span><div style="width: 100px; display: inline-block;">'.$row['name'].'</div></span>
-                        <input id="textinput" name="'.$row['id'].'" type="text" placeholder="'.$row['name'].'" value="'.$row['val'].'" style="display: inline-block;" class="darktextinput">
-                      </div>
-                      <br/>
-                    ';
-            }
-
-            echo '
-                    </form>
-                    <button id="savepersonal" style="margin-top:10px;" class="btn btn-primary">Сохранить</button>
+                    '.$personal->getFormForEdit($member['uid']).'
                     <input id="uid" type="hidden" value="' . $member['uid'] . '" />
                 </div>
 
             ';
-
 
         } else {
             echo '<div style="height: 100%" class="col-md-12 blackblock lowerblock">' . WarningsAndErrors::getNonTeamError() . '</div>';
@@ -103,7 +81,6 @@ require_once "classes/Personalinfo.php";
         ?>
 
     </div>
-
 
 </div>
 
@@ -173,25 +150,27 @@ require_once "classes/Personalinfo.php";
     };
 
     $("#savepersonal").click(
+
         function(){
             var json = JSON.stringify($("#personal-info-form").serializeArray());
             var uid = $("#uid").val();
+
+            alert(uid + " --- " + json);
+
             $.ajax({
                 url: "phpscripts/setpersonaldata.php",
                 type: "post",
                 data: { "jsn": json, "uid": uid},
                 success: function(response){
-                    var reply = JSON.parse(response);
-                    if(reply.message == "OK"){
-                        location.reload();
-                    }
+                    console.log(response);
                 },
                 error: function(response){
-                    alert(response);
+                    (response);
                 }
             })
 
         }
+
     );
 
 </script>

@@ -42,7 +42,6 @@ class InventoryDAO extends CoreDAO {
     }
 
     public function removeItem(Item $item){
-        parent::debugLog($item->id."<<<<");
         if(isset($item->id)){
             parent::execUpdate("DELETE FROM public.aspid_user_inventory WHERE item_id = ?",array($item->id));
             parent::execUpdate("DELETE FROM public.aspid_inventory_items WHERE id = ?",array($item->id));

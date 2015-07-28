@@ -141,4 +141,9 @@ class UserDAO extends CoreDAO {
         return null;
     }
 
+    public function getPersonalInfo($uid){
+        $query = "with t as (select * from aspid_personal_info where uid = ?) select s.*, t.* from personal_info_type s full outer join  t on t.type_id = s.id order by id";
+        return parent::execQuery($query,array($uid));
+    }
+
 }

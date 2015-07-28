@@ -66,39 +66,53 @@ if(isset($_POST['uid'])){
         $avatar = $dao->getAvatarPath($_POST['uid']);
 
         if(!empty($avatar)){
-            $avatar = '<img class="avatar" src="'.$avatar.'" />';
+            $avatar = '
+<div class="col-md-5 col-lg-5 col-sm-3 col-xs-0">
+    <div class="avatar-block">
+        <img class="avatar img-responsive" style="float:left;" src="'.$avatar.'" />
+    </div>
+</div>';
         } else {
             $avatar = '';
         }
 
+        $personal = $dao->getPersonalInfo($_POST['uid']);
 
         echo '
-        <div class="container">
+        <!--<div class="container">-->
 
             <div class="row">
 
-                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 item-link-ahref">
-
-                    <div class="profile-contacts">
-                    <div>
-                        <span>VK: <a href="http://vk.com/id'.$row['vkuid'].'">' . $row['username'] . '</a></span>
-                    </div>
-                    <div>
-                        <span>Телефон: <span class="contact-info">999-999-999</span></span>
-                    </div>
-                    </div>
-
-                </div>
-                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12" style="padding-right: 80px;">
                     '.$avatar.'
+
+                <div class="col-md-7 col-lg-7 col-sm-7 col-xs-12">
+                    <div class="profile-contacts item-link-ahref" style="padding: 10px;">
+                    <div>
+                        <span><a style="margin-left: 0;" href="http://vk.com/id'.$row['vkuid'].'">' .'VK: '. $row['username'] . '</a></span>
+                    </div>
+
+                    ';
+
+                foreach($personal as $p){
+                    echo'
+                    <div>
+                        <span>'.$p['name'].': <span class="contact-info">'.($p['val'] != '' ? $p['val'] : 'не указано').'</span></span>
+                    </div>'
+                    ;
+                }
+
+
+
+        echo '
+                    </div>
+                    '.buildAchievementsBlock($achies).'
                 </div>
+
+
+
             </div>
-            <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                '.buildAchievementsBlock($achies).'
-            </div>
-            </div>
-        </div>
+
+        <!--</div>-->
             ';
     }
 

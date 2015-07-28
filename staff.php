@@ -11,7 +11,7 @@ if(!isset($_SESSION)){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head><?php PageHead::getNormalHead() ?></head>
 
@@ -28,7 +28,7 @@ $presenter = new StaffPresenter();
 
     <div class="row block staff-main-block"  >
         <div class="col-md-offset-3 col-md-6 col-centered group-main-image">
-            <img src="img/commandspn.jpg" class="img-responsive"/>
+            <img src="img/commandspn.jpg" class="img-responsive img-staff-group"/>
             <h2 class="text-center">Командный состав</h2>
             <br/>
             <?php
@@ -38,24 +38,24 @@ $presenter = new StaffPresenter();
     </div>
 
     <div class="row block staff-main-block"  >
-        <div class="col-md-4 col-centered group-main-image">
-            <img src="img/recongroup.jpg" class="img-responsive"/>
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 col-centered group-main-image">
+            <img src="img/recongroup.jpg" class="img-responsive img-staff-group"/>
             <h2 class="text-center">Группа разведки</h2>
             <br/>
             <?php
             $presenter->showGroup(2);
             ?>
         </div>
-        <div class="col-md-4 col-centered group-main-image">
-            <img src="img/maingroup.jpg" class="img-responsive"/>
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12  col-centered group-main-image">
+            <img src="img/maingroup.jpg" class="img-responsive img-staff-group"/>
             <h2 class="text-center">Основная группа</h2>
             <br/>
             <?php
             $presenter->showGroup(1);
             ?>
         </div>
-        <div class="col-md-4 col-centered group-main-image">
-            <img src="img/assault.jpg" class="img-responsive"/>
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12  col-centered group-main-image">
+            <img src="img/assault.jpg" class="img-responsive img-staff-group"/>
             <h2 class="text-center">Штурмовая группа</h2>
             <br/>
             <?php
@@ -66,7 +66,7 @@ $presenter = new StaffPresenter();
 
     <div class="row block staff-main-block"  >
         <div class="col-md-offset-2 col-md-4 col-centered group-main-image">
-            <img src="img/recrutspn.jpg" class="img-responsive"/>
+            <img src="img/recrutspn.jpg" class="img-responsive img-staff-group"/>
             <h2 class="text-center">Рекруты</h2>
             <br/>
             <?php
@@ -74,7 +74,7 @@ $presenter = new StaffPresenter();
             ?>
         </div>
         <div class="col-md-4 col-centered group-main-image">
-            <img src="img/zapasspn.jpg" class="img-responsive"/>
+            <img src="img/zapasspn.jpg" class="img-responsive img-staff-group"/>
             <h2 class="text-center">Запас</h2>
             <br/>
             <?php
@@ -91,8 +91,6 @@ $presenter = new StaffPresenter();
 
         $(".btn-expand").click(function(){
 
-
-
             var profileBlock = $("#profile");
 
             var uid = $(this).parent().siblings(".uid-inpt").val();
@@ -100,6 +98,7 @@ $presenter = new StaffPresenter();
             $.ajax({
                 url: "phpscripts/printprofile.php",
                 type: "post",
+                async: false,
                 data: { "uid": uid},
                 success: function(response) {
                     profileBlock.html(response);

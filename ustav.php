@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head><?php PageHead::getNormalHead() ?></head>
 <body>
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
 <div class="container-fluid block" style="">
     <div class="row-fluid">
         <div class="span5 offsetHalf">
-            <div class=" col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 pull-center ustav-txt" style="padding:0px 30px 20px 30px;">
+            <div class=" col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 pull-center ustav-txt" style="color:#D1D3D4; padding:0px 30px 20px 30px;">
 
                 <br/><br/>
 

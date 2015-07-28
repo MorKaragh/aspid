@@ -19,7 +19,7 @@ require_once "classes/UserDAO.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 <?php PageHead::getNonAspidHead(); ?>

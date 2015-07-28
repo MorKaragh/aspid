@@ -26,7 +26,7 @@ require_once "classes/WarningsAndErrors.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <?php PageHead::getNormalHead() ?>

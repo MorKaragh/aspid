@@ -40,12 +40,18 @@ class Navbar {
 
         $user = $this->auth->authOpenAPIMember();
         if($user){
+            $reportButton = '';
+            $rewardButton = '';
+            $command='';
 
             if($this->auth->checkRole("COMMANDER")){
                 $reportButton = '<li><a href="reports.php">Отчеты</a></li>';
             }
             if($this->auth->checkRole("GIVE_REWARD")){
                 $rewardButton = '<li><a href="award.php">Награждение</a></li>';
+            }
+            if($this->auth->checkRole("TEAM_EDIT")){
+                $command = '<li><a href="private.php">Моя команда</a></li>';
             }
 
 
@@ -55,9 +61,9 @@ class Navbar {
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Личный Кабинет ('.($user['nickname']=='' ? $user['name'] : $user['nickname']).') <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="profile.php">Мой профиль</a></li>
-            <li><a href="private.php">Моя команда</a></li>
             <li><a href="inventory.php">Мое снаряжение</a></li>
-            '.$reportButton
+            '.$command
+             .$reportButton
              .$rewardButton.'
           </ul>
         </li>

@@ -25,14 +25,14 @@ require_once "classes/WarningsAndErrors.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <?php PageHead::getNormalHead() ?>
     <script src="js/userjs.js" type="application/javascript"></script>
 </head>
 
-<body>
+<body style="background-image: none; background-color: #000C00;">
 
 <?php (new Navbar())->show('USTAV'); ?>
 
@@ -76,7 +76,6 @@ require_once "classes/WarningsAndErrors.php";
                 ';
             } else {
                 $allMyItems = $inventoryDAO->getAllItemsByUid($member['uid']);
-                $inventoryDAO->debugLog($member['uid']);
                 echo '
                         <div id="inventoryContainer" class="col-md-12 inventory-main-block blackblock" style="padding-top:34px;">
                             ';

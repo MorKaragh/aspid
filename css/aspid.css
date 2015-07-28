@@ -164,9 +164,9 @@ a:link, a:visited {
 
 }
 
-.group-main-image .img-responsive {
+.group-main-image .img-staff-group {
     border-radius: 30px;
-    box-shadow: 0px 0px 10px 5px #081506;
+    box-shadow: 0px 0px 10px 5px #000000;
     margin: 20px auto;
 }
 
@@ -526,7 +526,7 @@ textarea {
 .achievement-icon:hover {
     text-decoration	: none;
     border:1px solid #225819;
-    border-radius: 5px;
+    border-radius: 40px;
 }
 
 .achievement-modal{
@@ -559,6 +559,9 @@ textarea {
 
 .avatar{
     border-radius: 10px;
+    padding:5px;
+    margin: 0px 5px 0px 5px;
+    border: 1px solid #225819;
 }
 
 .reward-block{
@@ -582,4 +585,13 @@ textarea {
 .print-profile-block{
     background-color:rgba(0,13,0,0.7);
     margin-bottom: 5px;
+    padding: 10px 0px 10px 0px;
+}
+
+.avatar-block{
+
+}
+
+.navbar-toggle:hover{
+ background-color: #8a6d3b;
 }

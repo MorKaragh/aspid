@@ -10,7 +10,7 @@ if(!isset($_SESSION)){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
     <head><?php PageHead::getNormalHead() ?></head>
 
